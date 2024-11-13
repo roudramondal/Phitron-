@@ -1,8 +1,16 @@
 #include<stdio.h>
 int main ()
 {
-  int a, b;
-  scanf("%d %d", &a, &b);
-  printf("%d %d %d", (a + b),(a-b),(a*b));
-  return 0;
+  int n, m;
+  scanf("%d %d", &n, &m);
+  int divi = 0;
+  for (int i = 1; i <= n;i++)
+  {
+    if (i%m==0)
+    {
+      printf("%d ", i);
+    }
+  }
+  
+    return 0;
 }
