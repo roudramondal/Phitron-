@@ -1,16 +1,40 @@
 #include<stdio.h>
 int main ()
 {
-  int n;
-  scanf("%d", &n);
-  int a[n];
-  for (int i = 0; i < n;i++)
+  char s[100];
+  int freq[26] = {0};
+  char chars[26];
+  scanf("%s", s);
+  for (int i = 0; s[i] != '\0';i++)
   {
-    scanf("%d", &a[i]);
+    freq[s[i] - 'a']++;
   }
-  for (int i = n - 1; i >= 0;i--)
+  for (int i = 0; i < 26;i++)
   {
-    printf("%d ", a[i]);
+    chars[i] = 'a' + i;
   }
+  for (int i = 0; i < 25;i++)
+  {
+    for (int j = i + 1; j < 26;j++)
+    {
+      if (freq[i]<freq[j])
+      {
+        int tempfreq = freq[i];
+        freq[i] = freq[j];
+        freq[j] = tempfreq;
+        char tempchar = chars[i];
+        chars[i] = chars[j];
+        chars[j] = tempchar;
+      }
+    }
+  }
+  for (int i = 0; i < 26;i++)
+  {
+    for (int j = 0; j < freq[i];j++)
+    {
+      printf("%c", chars[i]);
+    }
+  }
+  printf("\n");
   return 0;
 }
